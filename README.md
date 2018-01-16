@@ -1,2 +1,2 @@
 # hosting
-Expiremental Stage*
+Re-hosting items securly.
