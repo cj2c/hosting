@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<link href='css/cutscene.css' rel='stylesheet' type='text/css'>
+	</head>
+	<body>
+
+		<div id="header">
+			<div id="header_content"></div>
+		</div>
+
+		<div id="timeline"></div>
+
+		<div id="footer">
+			<!--div id="footer_icon"></div-->
+			<div id="footer_copy">&copy; 2044 Visionary Co.</div>
+		</div>
+
+
+		<script src="js/soundjs-0.5.2.min.js"></script>
+		<script src="js/intro_cutscene.js"></script>
+		<script>
+
+		// ALWAYS BE FOCUSING
+		setInterval(function(){
+			window.focus();
+		},500);
+
+		window.onload = function(){
+
+			var manifest = [
+				
+				/*{id:"door_open", src:"sounds/mp3/door_open.mp3|sounds/ogg/door_open.ogg"},
+				{id:"door_close", src:"sounds/mp3/door_close.mp3|sounds/ogg/door_close.ogg"},
+				{id:"city", src:"sounds/mp3/city.mp3|sounds/ogg/city.ogg"},
+				{id:"room", src:"sounds/mp3/room.mp3|sounds/ogg/room.ogg"},
+				{id:"step_1", src:"sounds/mp3/step_1.mp3|sounds/ogg/step_1.ogg"},
+				{id:"step_2", src:"sounds/mp3/step_2.mp3|sounds/ogg/step_2.ogg"},
+				{id:"squeak", src:"sounds/mp3/squeak.mp3|sounds/ogg/squeak.ogg"},
+				{id:"whack", src:"sounds/mp3/whack.mp3|sounds/ogg/whack.ogg"},
+				{id:"cough", src:"sounds/mp3/cough.mp3|sounds/ogg/cough.ogg"},
+
+				{id:"button_hover", src:'sounds/mp3/button_hover.mp3|sounds/ogg/button_hover.ogg'},
+				{id:"button_press", src:'sounds/mp3/button_press.mp3|sounds/ogg/button_press.ogg'}*/
+
+			];
+
+			// Images
+			var images = [
+				"icons/poppy.png",
+				"icons/gardner.png",
+				"icons/ieye.png",
+				"pics/sketch0001.png",
+				"pics/sketch0002.png",
+				"pics/sketch0003.png",
+				"pics/sketch0004.png",
+				"pics/sketch0005.png"
+			];
+
+			// On Asset Loaded
+			var imagesLoaded = 0;
+			var soundsLoaded = 0;
+			var imagesTotal = images.length;
+			var soundsTotal = manifest.length;
+			var _onAssetLoaded = function(){
+				var loaded = imagesLoaded + soundsLoaded;
+				var total = imagesTotal + soundsTotal;
+				if(window.top.onProgress){
+					window.top.onProgress(loaded/total);
+				}else{
+					console.log(loaded/total);
+				}
+				if(loaded==total) onLoad();
+			};
+
+			// Images loaded
+			for(var i=0;i<images.length;i++){
+				var img = new Image();
+				img.onload = function(){
+					imagesLoaded++;
+					_onAssetLoaded();
+				};
+				img.src = images[i];
+			}
+
+			// Sounds loaded
+			createjs.Sound.addEventListener("fileload",function(event){
+				soundsLoaded++;
+				_onAssetLoaded();
+			});
+			createjs.Sound.registerManifest(manifest);
+
+		};
+
+		var poster = {
+			poppy: {
+				user: "Poppy Gardner",
+				icon: "icons/poppy.png"
+			},
+			gardner: {
+				user: "George Gardner",
+				icon: "icons/gardner.png"
+			},
+			game: {
+				user: "IEYE 0x4449434B",
+				icon: "icons/ieye.png",
+				date: "just now"
+			}
+		};
+
+		var _generatePost = function(type,poster,date,data){
+			return {
+				type: type+"_post",
+				user: poster.user,
+				icon: poster.icon,
+				date: date,
+				data: data
+			}
+		};
+
+		var posts = [
+
+			_generatePost("parallax",poster.poppy,"40 minutes ago",{
+				height: 450,
+				layers:[
+					{img:"pics/sketch0001.png", depth:0.2, offset:50}
+				]
+			}),
+			_generatePost("parallax",poster.poppy,"40 minutes ago",{
+				height: 450,
+				layers:[
+					{img:"pics/sketch0002.png", depth:0.2, offset:50}
+				]
+			}),
+			_generatePost("parallax",poster.poppy,"40 minutes ago",{
+				height: 450,
+				layers:[
+					{img:"pics/sketch0003.png", depth:0.2, offset:50}
+				]
+			}),
+
+			_generatePost("parallax",poster.poppy,"39 minutes ago",{
+				height: 450,
+				layers:[
+					{img:"pics/sketch0004.png", depth:0.2, offset:50}
+				]
+			}),
+			_generatePost("conversation",poster.game,"39 minutes ago",{
+				message: "Hey! Long time no see, Poppy!"
+			}),
+
+			_generatePost("parallax",poster.poppy,"39 minutes ago",{
+				height: 450,
+				layers:[
+					{img:"pics/sketch0005.png", depth:0.2, offset:50}
+				]
+			}),
+			_generatePost("conversation",poster.game,"38 minutes ago",{
+				message: "Has it really been four months? Looking at you, I'd have thought it's been four CENTURIES. Ha!"
+			}),
+
+			_generatePost("parallax",poster.poppy,"37 minutes ago",{
+				height: 450,
+				layers:[
+					{img:"pics/sketch0006.png", depth:0.2, offset:50}
+				]
+			}),
+			_generatePost("conversation",poster.game,"37 minutes ago",{
+				message: "Oh, pulling up your old posts and pictures? Guess misery loves company, eh, Poppy?"
+			}),
+
+			_generatePost("parallax",poster.poppy,"37 minutes ago",{
+				height: 400,
+				layers:[
+					{img:"pics/sketch0007.png", depth:1, offset:100}
+				]
+			}),
+			_generatePost("conversation",poster.game,"37 minutes ago",{
+				message: "...Poppy?"
+			}),
+			_generatePost("parallax",poster.poppy,"37 minutes ago",{
+				height: 400,
+				layers:[
+					{img:"pics/sketch0008.png", depth:1, offset:100}
+				]
+			}),
+			_generatePost("parallax",poster.poppy,"4 months and 2 weeks ago",{
+				height: 400,
+				layers:[
+					{img:"pics/sketch0009.png", depth:1, offset:100}
+				]
+			}),
+
+
+			_generatePost("conversation",poster.poppy,"4 months and 2 weeks ago",{
+				message: "No worries, dad! I'll be home in two taps of a touchscreen."
+			}),
+			_generatePost("conversation",poster.gardner,"4 months and 2 weeks ago",{
+				message: "Fantastic! I just KNOW our show tonight will be special. Let's try to win back some of our audience, shall we?"
+			}),
+			_generatePost("conversation",poster.poppy,"4 months and 2 weeks ago",{
+				message: "Well, I better not keep them waiting! See y'all soon."
+			}),
+			_generatePost("conversation",poster.gardner,"4 months and 2 weeks ago",{
+				message: "Yes! Stay tuned in, everybody!"
+			}),
+
+
+			_generatePost("parallax",poster.poppy,"4 months and 2 weeks ago",{
+				height: 250,
+				layers:[
+					{img:"pics/sketch0010.png", depth:1, offset:100}
+				]
+			}),
+
+			_generatePost("conversation",poster.poppy,"4 months and 2 weeks ago",{
+				message: "Not like any of us can tune out..."
+			}),
+			_generatePost("conversation",poster.gardner,"4 months and 2 weeks ago",{
+				message: "Yes! Stay tuned in, everybody!"
+			}),
+
+			_generatePost("parallax",poster.poppy,"4 months and 2 weeks ago",{
+				height: 450,
+				layers:[
+					{img:"pics/sketch0011.png", depth:0.2, offset:50}
+				]
+			}),
+			_generatePost("parallax",poster.poppy,"4 months and 2 weeks ago",{
+				height: 450,
+				layers:[
+					{img:"pics/sketch0012.png", depth:0.2, offset:50}
+				]
+			}),
+			_generatePost("parallax",poster.poppy,"4 months and 2 weeks ago",{
+				height: 450,
+				layers:[
+					{img:"pics/sketch0013.png", depth:0.2, offset:50}
+				]
+			}),
+			_generatePost("conversation",poster.game,"4 months and 2 weeks ago",{
+				message: "Nice hair. Did you cut it yourself?"
+			})
+
+		];
+
+		</script>
+
+	</body>
+</html>
