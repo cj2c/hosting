@@ -1,0 +1,92 @@
+{
+	"player":{ "x":2.2, "y":5.7 },
+	"goal":{"ax":51,"bx":52,"ay":3,"by":4},
+
+	"prisms": [
+		{"x":0.5,"y":5.5},
+		{"x":11.5,"y":9.3},
+		{"x":31,"y":8},
+
+		{"x":39,"y":9.8},
+		{"x":43,"y":3}
+	],
+
+	"camera": [
+		{
+			"type": "fixed",
+			"zone": {"ax":0,"bx":10,"ay":0,"by":11},
+			"data": {"x":10,"y":5.5}
+		},
+		{
+			"type": "rails",
+			"zone": {"ax":10,"bx":28,"ay":0,"by":11},
+			"data": {"ax":10,"bx":28,"ay":5.5,"by":5.5}
+		},
+		{
+			"type": "fixed",
+			"zone": {"ax":28,"bx":41,"ay":0,"by":11},
+			"data": {"x":36,"y":5.5}
+		},
+		{
+			"type": "rails",
+			"zone": {"ax":41,"bx":52,"ay":0,"by":11},
+			"data": {"ax":41,"bx":52,"ay":5.5,"by":5.5}
+		}
+	],
+
+	"blocks": [
+		{"x":10, "y":6, "frame":16}
+	],
+
+	"checkpoints": [
+		{"ax":32,"bx":35,"ay":10,"by":11}
+	],
+
+	"dialogues": [
+		{
+			"area": {"ax":9,"bx":11,"ay":0,"by":11},
+			"queue": [
+				{ "message": "MARY HAD A LITTLE LAMB" },
+				{ "message": "whose fleece was white as snow" }
+			]
+		}
+	],
+
+	"propaganda": [
+		
+		{
+			"type":"scroll",
+			"img":"propaganda_cat",
+			"x":12, "y":2,
+			"down": "scroll_down",
+			"up": "scroll_up"
+		},
+
+		{
+			"type":"button",
+			"x":20,"y":8,
+			"message": "scroll_down"
+		},
+		
+		{
+			"type":"button",
+			"x":21,"y":8,
+			"message": "scroll_up"
+		},
+		
+		{"type":"image", "img":"propaganda_down", "x":20, "y":-7},
+		{"type":"image", "img":"propaganda_up", "x":21, "y":-7},
+
+		{"type":"image", "img":"propaganda_tut_walk", "x":0, "y":0},
+		// {"type":"image", "img":"propaganda_smile", "x":12, "y":2},
+		{"type":"image", "img":"propaganda_tut_slow", "x":28, "y":0},
+		{"type":"image", "img":"propaganda_tut_reminder", "x":32, "y":9},
+		{"type":"image", "img":"propaganda_intro_pics", "x":33, "y":0}
+
+	],
+
+	"art": {
+		"ignoreCameras": false
+	}
+
+}
