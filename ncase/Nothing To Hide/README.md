@@ -27,7 +27,7 @@ She's never had a private thought. If you can't hide who you are... you have to 
 
 ### Links
 
-* [The Browser Demo (HTML5)](http://demo.nothingtohide.cc/)
+* [The Browser Demo (HTML5)](/code/demo/index.html)
 * [Website / Crowdfunding Campaign](http://back.nothingtohide.cc/)
 * [Nothing To Say Newsletter](http://tinyletter.com/nothingtohide/letters)
 
