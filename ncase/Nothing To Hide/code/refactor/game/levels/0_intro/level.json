@@ -1,0 +1,78 @@
+{
+
+	"realobjects": [
+		
+		{ "type": "Player", "x":2.2, "y":5.7 },
+
+		{ "type": "Monolith", "x":0.5,"y":5.5},
+		{ "type": "Monolith", "x":11,"y":10},
+		{
+			"id": "fatty",
+			"type": "Monolith",
+			"x":34.5,"y":10.66, "exact":true
+		},
+		{ "type": "Monolith", "x":40,"y":3 },
+
+		{ "type": "FloorDecoration", "image": "intro/shatter", "x":31.4, "y":7.7 }
+
+	],
+
+	"wallobjects": [
+
+		{ "type": "WallImage", "image": "intro/walking", "x":0, "y":0 },
+		{ "type": "WallImage", "image": "intro/smile", "x":12, "y":1 },
+		{ "type": "WallImage", "image": "intro/slowdown", "x":29, "y":0 },
+		
+		{ "type": "WallButton", "icon": "icon/down", "x":25, "y":8, "message": "vote_zero" },
+		{ "type": "WallButton", "icon": "icon/up", "x":26, "y":8, "message": "vote_one" },
+		{ "type": "WallButton", "icon": "icon/down", "x":46, "y":2, "message": "vote2_zero" },
+		{ "type": "WallButton", "icon": "icon/up", "x":47, "y":2, "message": "vote2_one" }
+		
+	],
+	
+	"gamelogic":[
+		
+		// STAY IN SIGHT & GOAL
+		{ "type": "StayInSight" },
+		{ "type": "Goal", "left":51, "right":52, "top":3, "bottom":4 },
+		
+		// Checkpoints
+		{ "type": "Checkpoint", "left":33, "right":34, "top":10, "bottom":11 },
+
+		// Scripted Zones
+		{
+			"type": "ZoneMessage",
+			"zone": {"left":32,"right":33,"top":10,"bottom":11},
+			"message": "conversation"
+		},
+
+		// Camera logic
+		{
+			"type": "FixedCamera",
+			"zone": {"left":0,"right":10,"top":0,"bottom":11},
+			"data": {"x":7,"y":5.5}
+		},
+		{
+			"type": "RailsCamera",
+			"zone": {"left":10,"right":28,"top":0,"bottom":11},
+			"data": {"ax":10,"ay":5.5,"bx":28,"by":5.5}
+		},
+		{
+			"type": "FixedCamera",
+			"zone": {"left":28,"right":36,"top":0,"bottom":11},
+			"data": {"x":35,"y":5.5}
+		},
+		{
+			"type": "FixedCamera",
+			"zone": {"left":36,"right":41,"top":5,"bottom":11},
+			"data": {"x":35,"y":5.5}
+		},
+		{
+			"type": "RailsCamera",
+			"zone": {"left":36,"right":52,"top":0,"bottom":5},
+			"data": {"ax":41,"ay":5.5,"bx":52,"by":5.5}
+		}
+
+	]
+
+}

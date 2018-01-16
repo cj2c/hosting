@@ -1,0 +1,22 @@
+{
+	"image":{
+
+		"pu/corner_desk_left": "assets/corner_desk_left.png",
+		"pu/corner_desk_right": "assets/corner_desk_right.png",
+		"pu/long_desk": "assets/long_desk.png",
+		"pu/plant": "assets/plant.png"
+
+	},
+	"sprite":{
+
+		// Monolith
+		"Monolith_Love": "assets/monolith_love",
+		"Monolith_Dies": "assets/monolith_dies",
+		"Monolith_Cry": "assets/monolith_cry"
+
+	},
+	"sound":{},
+	"script":[
+		"assets/LoveMonolith.js"
+	]
+}

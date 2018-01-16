@@ -1,0 +1,70 @@
+{
+
+	"realobjects": [
+		
+		{ "type": "Player", "x":0, "y":5 },
+
+		{ "type": "Monolith", "x":14, "y":5 },
+		{ "type": "Monolith", "x":5, "y":11 },
+		{ "type": "Monolith", "x":5, "y":15 },
+
+		{ "type": "StaticBlock", "x":7, "y":4, "width":6, "height":2 },
+		{ "type": "StaticBlock", "x":8.5, "y":15, "width":3, "height":1 },
+		{ "type": "StaticBlock", "x":6, "y":12, "width":8, "height":2 },
+
+		{
+			"type": "Conveyor",
+			"x":5, "y":6, "width":1, "height":5,
+			"direction": {"x":0,"y":1}
+		},
+		{
+			"type": "Conveyor",
+			"x":14, "y":6, "width":1, "height":5,
+			"direction": {"x":0,"y":-1}
+		},
+		{
+			"type": "Conveyor",
+			"x":6, "y":16.5, "width":8, "height":1,
+			"direction": {"x":-0.5,"y":0},
+
+			// SO COOL
+			"FILL_CONVEYOR": "conveyor/bloody",
+			"LOOP_TEXTURE": 16
+		}
+
+	],
+
+	"wallobjects": [
+	],
+	
+	"gamelogic":[
+		
+		// STAY IN SIGHT & GOAL
+		{ "type": "StayInSight" },
+		{ "type": "Pickup" },
+		{ "type": "Goal", "left":27, "right":28, "top":15, "bottom":16 },
+		
+		// Checkpoints
+
+		// Scripted Zones
+
+		// Camera logic
+		{
+			"type": "FixedCamera",
+			"zone": {"left":0,"right":20,"top":0,"bottom":6},
+			"data": {"x":10,"y":6}
+		},
+		{
+			"type": "RailsCamera",
+			"zone": {"left":0,"right":20,"top":6,"bottom":13},
+			"data": {"ax":10,"bx":10,"ay":0,"by":1}
+		},
+		{
+			"type": "FixedCamera",
+			"zone": {"left":0,"right":20,"top":13,"bottom":19},
+			"data": {"x":10,"y":13}
+		}
+
+	]
+
+}
