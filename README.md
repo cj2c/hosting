@@ -1,3 +1,3 @@
 # hosting
 Re-hosting items securly.
-* [The Browser Demo (HTML5)](/code/demo/index.html)
+* [(Nothing To Hide)](/ncase/Nothing%20To%20Hide/code/demo/index.html)
