@@ -1,0 +1,30 @@
+{
+	"script": [
+
+		// Camera Game Logic
+		"gamelogic/ZoneCamera.js",
+		"gamelogic/FixedCamera.js",
+		"gamelogic/RailsCamera.js",
+		"gamelogic/StayInSight.js",
+		"gamelogic/ZoneMessage.js",
+		"gamelogic/Checkpoint.js",
+		"gamelogic/Goal.js",
+		"gamelogic/Pickup.js",
+
+		// Wall Object Pieces
+		"wallobjects/WallImage.js",
+		"wallobjects/WallSprite.js",
+		"wallobjects/WallRecord.js",
+		"wallobjects/WallScroll.js",
+		"wallobjects/WallButton.js",
+
+		// Real Object Pieces
+		"realobjects/Player.js",
+		"realobjects/Monolith.js",
+		"realobjects/FloorDecoration.js",
+		"realobjects/StaticBlock.js",
+		"realobjects/Conveyor.js",
+		"realobjects/Rover.js"
+		
+	]
+}
