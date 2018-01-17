@@ -1,5 +1,5 @@
 <?php
-  if ($handle = opendir('.')) {
+  if ($handle = opendir('./flash/glulo/')) {
     while (false !== ($file = readdir($handle))) {
       if ($file != "." $file != "..") {
         $thelist .= '<li><a href="'.$file.'">'.$file.'</a></li>';
