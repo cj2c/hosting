@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<body>
+<script>
+var myVar = setInterval(function(){ setColor() }, 1);
+
+function setColor() {
+    var x = document.body;
+    x.style.backgroundColor = x.style.backgroundColor == "black" ? "white" : "black";
+}
+
+function stopColor() {
+    clearInterval(myVar);
+}
+</script>
+</body>
+</html>
