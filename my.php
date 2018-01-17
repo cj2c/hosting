@@ -10,3 +10,4 @@ $b = scandir($dir,1);
 print_r($a);
 print_r($b);
 ?>
+Math.floor(Math.random() * (1 + High));
