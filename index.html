@@ -1,7 +1,17 @@
 <!DOCTYPE html>
 <html>
-  <meta http-equiv="refresh" content="0;URL='https://www.cj2c.com/'" /> 
+  <meta http-equiv="refresh" content="10;URL='https://www.cj2c.com/'" /> 
 <body>
-  ***Server Site***
+  var i = 0;
+var txt = 'This site is not meant to be shown publicly... Please wait while you´re being redirected...'; /* The text */
+var speed = 50; /* The speed/duration of the effect in milliseconds */
+
+function typeWriter() {
+  if (i < txt.length) {
+    document.getElementById("demo").innerHTML += txt.charAt(i);
+    i++;
+    setTimeout(typeWriter, speed);
+  }
+}
 </body>
 </html>
