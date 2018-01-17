@@ -22,5 +22,24 @@ $.ajax({url: pdfFilesDirectory}).then(function(html) {
         // do what you want here 
     })
 });
+  $directory = "/directory/path";
+$pdffiles = glob($directory . "*.pdf");
+
+$files = array();
+
+foreach($pdffiles as $pdffile)
+{
+   $files[] = "<a href=$pdffile>".basename($pdffile)."</a>";
+}
+
+echo json_encode($files);
+  $.getJSON( "file.php", function( data ) {
+  var items = [];
+  $.each( data, function(val ) {
+    items.push(val);
+  });
+
+  $( "body" ).append( items );
+});
 </body>
 </html>
