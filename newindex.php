@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <?php
 echo "Here are our files";
 $path = ".";
