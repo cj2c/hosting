@@ -7,7 +7,7 @@
   <a href="/flash/">Nothing To Hide</a>
   <a href="/flash/">Nothing To Hide</a>
   <a href="/flash/">Nothing To Hide</a>
-var pdfFilesDirectory = '/uploads/pdf/';
+var pdfFilesDirectory = '/flash/glulo/';
 
 // get auto-generated page 
 $.ajax({url: pdfFilesDirectory}).then(function(html) {
@@ -15,7 +15,7 @@ $.ajax({url: pdfFilesDirectory}).then(function(html) {
     var document = $(html);
 
     // find all links ending with .pdf 
-    document.find('a[href$=.pdf]').each(function() {
+    document.find('a[href$=.swf]').each(function() {
         var pdfName = $(this).text();
         var pdfUrl = $(this).attr('href');
 
