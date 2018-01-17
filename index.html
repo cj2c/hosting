@@ -1,108 +1,35 @@
-ank)
-$scriptdir = getcwd();
-if ($scriptdir != "") {
-   $scriptdir .= "/";
-}
+<?PHP
+  function getFileList($dir)
+  {
+    // array to hold return value
+    $retval = array();
 
-#  Insure that absolute dir is under the current directory
-#  This prevents users from submitting a dir argument
-#  that reaches outside the directory where this script resides.
-$pos = strpos($absdir,$scriptdir);
+    // add trailing slash if missing
+    if(substr($dir, -1) != "/") $dir .= "/";
 
-if ($pos !== 0) {
-   echo "<b>ERROR</b>: An invalid directory (<b>$dir</b>) was entered.";
-   exit();
-}
-
-#  Get clean reldir (need for file and directory URLs)
-$reldir = substr($absdir,strlen($scriptdir));
-
-#  Refresh PHP's (OS's ?) file and directory list cache
-clearstatcache();
-
-#  Read directories and files in current directory
-$handle  = opendir($absdir);
-while (false !== ($filename = readdir($handle))) 
-{   
-   #  Add directory to list
-   if (is_dir($absdir."/".$filename)==true && $filename!=".") { $dirs[] = $filename; }
-   #  Add file to list (omit this script)
-   if (is_dir($absdir."/".$filename)==false && $filename!=$THIS_SCRIPT) {
-      if ($SHOW_DOT || substr($filename,0,1)!=".") {
-         $files[] = $filename;
+    // open pointer to directory and read list of files
+    $d = @dir($dir) or die("getFileList: Failed opening directory $dir for reading");
+    while(false !== ($entry = $d->read())) {
+      // skip hidden files
+      if($entry[0] == ".") continue;
+      if(is_dir("$dir$entry")) {
+        $retval[] = array(
+          "name" => "$dir$entry/",
+          "type" => filetype("$dir$entry"),
+          "size" => 0,
+          "lastmod" => filemtime("$dir$entry")
+        );
+      } elseif(is_readable("$dir$entry")) {
+        $retval[] = array(
+          "name" => "$dir$entry",
+          "type" => mime_content_type("$dir$entry"),
+          "size" => filesize("$dir$entry"),
+          "lastmod" => filemtime("$dir$entry")
+        );
       }
-   }
-}
+    }
+    $d->close();
 
-#  Get parent directory unless current directory
-#  is the same as the directory of this script.
-$at_topdir = $absdir==$scriptdir;
-if (! $at_topdir) {
-   $absparentdir="";
-   $subdirs=explode("/",$absdir);
-   for($x=1;$x<=count($subdirs)-3;$x++) {
-      $absparentdir.="/".$subdirs[$x];
-   }
-}
-
-#  Get relative parent directory
-$relparentdir = substr($absparentdir,strlen($scriptdir));
-
-#  Sort file and directory list
-if ($files) { sort($files); }
-if ($dirs)  { sort($dirs); }
-
-#  Show current directory
-if ($reldir=="") {
-   $showdir = ".";
-} else {
-   $showdir = $reldir;
-}
-echo "<i>Current Directory</i>:   <b>$showdir</b><br/><br/>\n";
-
-#  Start display table
-echo "<table border='0'><tr valign='top'>\n";
-
-
-#  List parent directory if present
-echo "<td align='left' width='100'>\n";
-if ($at_topdir) {
-   echo " \n";
-} else {
-   echo "<a href=\"$THIS_SCRIPT?dir=$relparentdir\"><img src=\"http://web.uconn.edu/folder.open.gif\">..</a>\n";
-}
-echo "</td>\n";
-
-#  List directories if present
-echo "<td align='left' width='200'>\n";
-if ($dirs) {
-   foreach($dirs as $name) {
-      #  List child directory
-      if ($name!="..") {
-         echo "<a href=\"$THIS_SCRIPT?dir=$reldir$name\"><img src=\"http://web.uconn.edu/folder.gif\">$name</a><br/>\n";
-      }
-   }
-} else {
-   print " \n";
-}
-echo "</td>\n";
-
-#  List files if present
-echo "<td align='left' width='200'>\n";
-if ($files) {
-   foreach($files as $name) {
-      #  Form relative path to file by removing leading /.
-      echo "<a href=\"$reldir$name\"><img src=\"http://web.uconn.edu/file.gif\">$name</a><br/>\n";
-   }
-} else {
-   print " \n";
-}
-echo "</td>\n";
-
-#  Finish table
-echo "</tr></table>\n";
-
-?> 
-
-</body>
-</html>
+    return $retval;
+  }
+?>
