@@ -1,13 +1,12 @@
 <?php
-$dir = "/images/";
-
-// Sort in ascending order - this is default
-$a = scandir($dir);
-
-// Sort in descending order
-$b = scandir($dir,1);
-
-print_r($a);
-print_r($b);
+  if ($handle = opendir('.')) {
+    while (false !== ($file = readdir($handle))) {
+      if ($file != "." && $file != "..") {
+        $thelist .= '<li><a href="'.$file.'">'.$file.'</a></li>';
+      }
+    }
+    closedir($handle);
+  }
 ?>
-Math.floor(Math.random() * (1 + High));
+<h1>List of files:</h1>
+<ul><?php echo $thelist; ?></ul>
