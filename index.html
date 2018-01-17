@@ -7,18 +7,20 @@
   <a href="/flash/">Nothing To Hide</a>
   <a href="/flash/">Nothing To Hide</a>
   <a href="/flash/">Nothing To Hide</a>
- <?php
-echo "Here are our files";
-$path = ".";
-$dh = opendir($path);
-$i=1;
-while (($file = readdir($dh)) !== false) {
-    if($file != "." && $file != ".." && $file != "index.php" && $file != ".htaccess" && $file != "error_log" && $file != "cgi-bin") {
-        echo "<a href='$path/$file'>$file</a><br /><br />";
-        $i++;
-    }
-}
-closedir($dh);
-?> 
+var pdfFilesDirectory = '/uploads/pdf/';
+
+// get auto-generated page 
+$.ajax({url: pdfFilesDirectory}).then(function(html) {
+    // create temporary DOM element
+    var document = $(html);
+
+    // find all links ending with .pdf 
+    document.find('a[href$=.pdf]').each(function() {
+        var pdfName = $(this).text();
+        var pdfUrl = $(this).attr('href');
+
+        // do what you want here 
+    })
+});
 </body>
 </html>
